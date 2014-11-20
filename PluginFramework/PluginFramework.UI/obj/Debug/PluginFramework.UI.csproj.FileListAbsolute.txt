@@ -1,0 +1,4 @@
+C:\Users\can\documents\visual studio 2013\Projects\PluginFramework\PluginFramework.UI\bin\Debug\PluginFramework.UI.dll
+C:\Users\can\documents\visual studio 2013\Projects\PluginFramework\PluginFramework.UI\bin\Debug\PluginFramework.UI.pdb
+C:\Users\can\documents\visual studio 2013\Projects\PluginFramework\PluginFramework.UI\obj\Debug\PluginFramework.UI.dll
+C:\Users\can\documents\visual studio 2013\Projects\PluginFramework\PluginFramework.UI\obj\Debug\PluginFramework.UI.pdb

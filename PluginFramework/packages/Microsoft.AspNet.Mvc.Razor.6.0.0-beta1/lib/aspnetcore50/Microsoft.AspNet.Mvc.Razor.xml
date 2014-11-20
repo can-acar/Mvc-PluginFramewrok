@@ -1,0 +1,1349 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Mvc.Razor</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.DefaultTagHelperActivator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.DefaultTagHelperActivator.#ctor">
+            <summary>
+            Instantiates a new <see cref="T:Microsoft.AspNet.Mvc.Razor.DefaultTagHelperActivator"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.DefaultTagHelperActivator.Activate(Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper,Microsoft.AspNet.Mvc.ViewContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.DefaultViewLocationCache">
+            <summary>
+            Default implementation of <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationCache"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.DefaultViewLocationCache.#ctor">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.DefaultViewLocationCache"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.DefaultViewLocationCache.Get(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.DefaultViewLocationCache.Set(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.HelperResult">
+            <summary>
+            Represents a deferred write operation in a <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorPage"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.HelperResult.#ctor(System.Action{System.IO.TextWriter})">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.HelperResult"/>.
+            </summary>
+            <param name="action">The delegate to invoke when <see cref="M:Microsoft.AspNet.Mvc.Razor.HelperResult.WriteTo(System.IO.TextWriter)"/> is called.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.HelperResult.WriteAction">
+            <summary>
+            Gets the delegate to invoke when <see cref="M:Microsoft.AspNet.Mvc.Razor.HelperResult.WriteTo(System.IO.TextWriter)"/> is called.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.HelperResult.WriteTo(System.IO.TextWriter)">
+            <summary>
+            Method invoked to produce content from the <see cref="T:Microsoft.AspNet.Mvc.Razor.HelperResult"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> instance to write to.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IRazorPage">
+            <summary>
+            Represents properties and methods that are used by <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorView"/> for execution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.ViewContext">
+            <summary>
+            Gets or sets the view context of the renderign view.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.RenderBodyDelegate">
+            <summary>
+            Gets or sets the action invoked to render the body.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.IsLayoutBeingRendered">
+            <summary>
+            Gets or sets a flag that determines if the layout of this page is being rendered.
+            </summary>
+            <remarks>
+            Sections defined in a page are deferred and executed as part of the layout page.
+            When this flag is set, all write operations performed by the page are part of a 
+            section being rendered.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.Path">
+            <summary>
+            Gets the application base relative path to the page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.Layout">
+            <summary>
+            Gets or sets the path of a layout page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.IsPartial">
+            <summary>
+            Gets or sets a value that determines if the current instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> is being executed
+            from a partial view.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.PageExecutionContext">
+            <summary>
+            Gets or sets a <see cref="T:Microsoft.AspNet.PageExecutionInstrumentation.IPageExecutionContext"/> instance used to instrument the page execution.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.PreviousSectionWriters">
+            <summary>
+            Gets or sets the sections that can be rendered by this page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.IRazorPage.SectionWriters">
+            <summary>
+            Gets the sections that are defined by this page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorPage.ExecuteAsync">
+            <summary>
+            Renders the page and writes the output to the <see cref="P:Microsoft.AspNet.Mvc.ViewContext.Writer"/>.
+            </summary>
+            <returns>A task representing the result of executing the page.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorPage.EnsureBodyAndSectionsWereRendered">
+            <summary>
+            Verifies that RenderBody is called and that RenderSection is called for all sections for a page that is
+            part of view execution hierarchy.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IRazorPageActivator">
+            <summary>
+            Provides methods to activate properties on a <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorPageActivator.Activate(Microsoft.AspNet.Mvc.Razor.IRazorPage,Microsoft.AspNet.Mvc.ViewContext)">
+            <summary>
+            When implemented in a type, activates an instantiated page.
+            </summary>
+            <param name="page">The page to activate.</param>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ViewContext"/> for the executing view.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IRazorPageFactory">
+            <summary>
+            Defines methods that are used for creating <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> instances at a given path.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorPageFactory.CreateInstance(System.String)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> for the specified path.
+            </summary>
+            <param name="relativePath">The path to locate the page.</param>
+            <returns>The IRazorPage instance if it exists, null otherwise.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IRazorView">
+            <summary>
+            Represents the contract for an <see cref="T:Microsoft.AspNet.Mvc.Rendering.IView"/> that executes <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> as part of its
+            execution.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorView.Contextualize(Microsoft.AspNet.Mvc.Razor.IRazorPage,System.Boolean)">
+            <summary>
+            Contextualizes the current instance of the <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorView"/> providing it with the 
+            <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> to execute.
+            </summary>
+            <param name="razorPage">The <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> instance to execute.</param>
+            <param name="isPartial">Determines if the view is to be executed as a partial.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ITagHelperActivator">
+            <summary>
+            Provides methods to activate properties on a <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/> instance.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ITagHelperActivator.Activate(Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper,Microsoft.AspNet.Mvc.ViewContext)">
+            <summary>
+            When implemented in a type, activates an instantiated <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/>.
+            </summary>
+            <param name="tagHelper">The <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/> to activate.</param>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.ViewContext"/> for the executing view.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IViewLocationCache">
+            <summary>
+            Specifies the contracts for caching view locations generated by <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IViewLocationCache.Get(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)">
+            <summary>
+            Gets a cached view location based on the specified <paramref name="context"/>.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext"/> for the current view location 
+            expansion.</param>
+            <returns>The cached location, if available, <c>null</c> otherwise.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IViewLocationCache.Set(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext,System.String)">
+            <summary>
+            Adds a cache entry for values specified by <paramref name="context"/>.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext"/> for the current view location 
+            expansion.</param>
+            <param name="value">The view location that is to be cached.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander">
+            <summary>
+            Specifies the contracts for a view location expander that is used by <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> instances to
+            determine search paths for a view.
+            </summary>
+            <remarks>
+            Individual <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>s are invoked in two steps:
+            (1) <see cref="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.PopulateValues(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)"/> is invoked and each expander
+            adds values that it would later consume as part of 
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.ExpandViewLocations(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext,System.Collections.Generic.IEnumerable{System.String})"/>.
+            The populated values are used to determine a cache key - if all values are identical to the last time
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.PopulateValues(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)"/> was invoked, the cached result
+            is used as the view location.
+            (2) If no result was found in the cache or if a view was not found at the cached location, 
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.ExpandViewLocations(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext,System.Collections.Generic.IEnumerable{System.String})"/> is invoked to determine 
+            all potential paths for a view.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.PopulateValues(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)">
+            <summary>
+            Invoked by a <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> to determine the values that would be consumed by this instance of
+            <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>. The calculated values are used to determine if the view location has
+            changed since the last time it was located.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext"/> for the current view location
+            expansion operation.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.ExpandViewLocations(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Invoked by a <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> to determine potential locations for a view.
+            </summary>
+            <param name="context">The <see cref="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext"/> for the current view location
+            expansion operation.</param>
+            <param name="values">The sequence of view locations to expand.</param>
+            <returns>A list of expanded view locations.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IViewStartProvider">
+            <summary>
+            Defines methods for locating ViewStart pages that are applicable to a page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IViewStartProvider.GetViewStartPages(System.String)">
+            <summary>
+            Given a view path, returns a sequence of ViewStart instances
+            that are applicable to the specified view.
+            </summary>
+            <param name="path">The path of the page to locate ViewStart files for.</param>
+            <returns>A sequence of <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> that represent ViewStart.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorPage">
+            <summary>
+            Represents properties and methods that are needed in order to render a view that uses Razor syntax.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Path">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.ViewContext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Layout">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.IsPartial">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.PageExecutionContext">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output">
+            <summary>
+            Gets the TextWriter that the page is writing output to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderBodyDelegate">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.IsLayoutBeingRendered">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.PreviousSectionWriters">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorPage.SectionWriters">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.ExecuteAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.CreateTagHelper``1">
+            <summary>
+            Creates and activates a <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/>.
+            </summary>
+            <typeparam name="TTagHelper">A <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/> type.</typeparam>
+            <returns>The activated <see cref="T:Microsoft.AspNet.Razor.Runtime.TagHelpers.ITagHelper"/>.</returns>
+            <remarks>
+            <typeparamref name="TTagHelper"/> must have a parameterless constructor.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.StartWritingScope">
+            <summary>
+            Starts a new writing scope.
+            </summary>
+            <remarks>
+            All writes to the <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/> or <see cref="P:Microsoft.AspNet.Mvc.ViewContext.Writer"/> after calling this method will 
+            be buffered until <see cref="M:Microsoft.AspNet.Mvc.Razor.RazorPage.EndWritingScope"/> is called.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.EndWritingScope">
+            <summary>
+            Ends the current writing scope that was started by calling <see cref="M:Microsoft.AspNet.Mvc.Razor.RazorPage.StartWritingScope"/>.
+            </summary>
+            <returns>The <see cref="T:System.IO.TextWriter"/> that contains the content written to the <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/> or 
+            <see cref="P:Microsoft.AspNet.Mvc.ViewContext.Writer"/> during the writing scope.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.Write(System.Object)">
+            <summary>
+            Writes the specified <paramref name="value"/> with HTML encoding to <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to write.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.WriteTo(System.IO.TextWriter,System.Object)">
+            <summary>
+            Writes the specified <paramref name="value"/> with HTML encoding to <paramref name="writer"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> instance to write to.</param>
+            <param name="value">The <see cref="T:System.Object"/> to write.</param>
+            <remarks>
+            <paramref name="value"/>s of type <see cref="T:Microsoft.AspNet.Mvc.Rendering.HtmlString"/> are written without encoding and the
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.HelperResult.WriteTo(System.IO.TextWriter)"/> is invoked for <see cref="T:Microsoft.AspNet.Mvc.Razor.HelperResult"/> types.
+            For all other types, the encoded result of <see cref="M:System.Object.ToString"/> is written to the
+            <paramref name="writer"/>.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.WriteTo(System.IO.TextWriter,System.String)">
+            <summary>
+            Writes the specified <paramref name="value"/> with HTML encoding to <paramref name="writer"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> instance to write to.</param>
+            <param name="value">The <see cref="T:System.String"/> to write.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.WriteLiteral(System.Object)">
+            <summary>
+            Writes the specified <paramref name="value"/> without HTML encoding to <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.Object"/> to write.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.WriteLiteralTo(System.IO.TextWriter,System.Object)">
+            <summary>
+            Writes the specified <paramref name="value"/> without HTML encoding to the <paramref name="writer"/>.
+            </summary>
+            <param name="writer">The <see cref="T:System.IO.TextWriter"/> instance to write to.</param>
+            <param name="value">The <see cref="T:System.Object"/> to write.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.WriteLiteralTo(System.IO.TextWriter,System.String)">
+            <summary>
+            Writes the specified <paramref name="value"/> without HTML encoding to <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/>.
+            </summary>
+            <param name="value">The <see cref="T:System.String"/> to write.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.DefineSection(System.String,Microsoft.AspNet.Mvc.Razor.RenderAsyncDelegate)">
+            <summary>
+            Creates a named content section in the page that can be invoked in a Layout page using 
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSection(System.String)"/> or <see cref="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSectionAsync(System.String,System.Boolean)"/>.
+            </summary>
+            <param name="name">The name of the section to create.</param>
+            <param name="section">The <see cref="T:Microsoft.AspNet.Mvc.Razor.RenderAsyncDelegate"/> to execute when rendering the section.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSection(System.String)">
+            <summary>
+            In layout pages, renders the content of the section named <paramref name="name"/>.
+            </summary>
+            <param name="name">The name of the section to render.</param>
+            <returns>Returns a HtmlString that contains the rendered HTML.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSection(System.String,System.Boolean)">
+            <summary>
+            In layout pages, renders the content of the section named <paramref name="name"/>.
+            </summary>
+            <param name="name">The section to render.</param>
+            <param name="required">Indicates if this section must be rendered.</param>
+            <returns>Returns a HtmlString that contains the rendered HTML.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSectionAsync(System.String)">
+            <summary>
+            In layout pages, asynchronously renders the content of the section named <paramref name="name"/>.
+            </summary>
+            <param name="name">The section to render.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that on completion returns a <see cref="T:Microsoft.AspNet.Mvc.Rendering.HtmlString"/> containing
+            the rendered HTML.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.RenderSectionAsync(System.String,System.Boolean)">
+            <summary>
+            In layout pages, asynchronously renders the content of the section named <paramref name="name"/>.
+            </summary>
+            <param name="name">The section to render.</param>
+            <returns>A <see cref="T:System.Threading.Tasks.Task`1"/> that on completion returns a <see cref="T:Microsoft.AspNet.Mvc.Rendering.HtmlString"/> containing
+            the rendered HTML.</returns>
+            <exception cref="T:System.InvalidOperationException">if <paramref name="required"/> is <c>true</c> and the section
+            was not registered using the <c>@section</c> in the Razor page.</exception>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.FlushAsync">
+            <summary>
+            Invokes <see cref="M:System.IO.TextWriter.FlushAsync"/> on <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorPage.Output"/> writing out any buffered
+            content to the <see cref="P:Microsoft.AspNet.Http.HttpResponse.Body"/>.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous flush operation.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage.EnsureBodyAndSectionsWereRendered">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorPageActivator">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPageActivator.#ctor(Microsoft.Framework.DependencyInjection.ITypeActivator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorPageActivator"/> class.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPageActivator.Activate(Microsoft.AspNet.Mvc.Razor.IRazorPage,Microsoft.AspNet.Mvc.ViewContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorPage`1">
+            <summary>
+            Represents the properties and methods that are needed in order to render a view that uses Razor syntax.
+            </summary>
+            <typeparam name="TModel">The type of the view data model.</typeparam>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorPage`1.CreateModelExpression``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Returns a <see cref="T:Microsoft.AspNet.Mvc.Rendering.ModelExpression"/> instance describing the given <paramref name="expression"/>.
+            </summary>
+            <typeparam name="TValue">The type of the <paramref name="expression"/> result.</typeparam>
+            <param name="expression">An expression to be evaluated against the current model.</param>
+            <returns>A new <see cref="T:Microsoft.AspNet.Mvc.Rendering.ModelExpression"/> instance describing the given <paramref name="expression"/>.
+            </returns>
+            <remarks>
+            Compiler normally infers <typeparamref name="TValue"/> from the given <paramref name="expression"/>.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorTextWriter">
+            <summary>
+            A <see cref="T:System.IO.TextWriter"/> that is backed by a unbuffered writer (over the Response stream) and a buffered
+            <see cref="T:Microsoft.AspNet.Mvc.Rendering.StringCollectionTextWriter"/>. When <c>Flush</c> or <c>FlushAsync</c> is invoked, the writer
+            copies all content from the buffered writer to the unbuffered one and switches to writing to the unbuffered
+            writer for all further write operations.
+            </summary>
+            <remarks>
+            This type is designed to avoid creating large in-memory strings when buffering and supporting the contract that
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.RazorPage.FlushAsync"/> expects.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.#ctor(System.IO.TextWriter,System.Text.Encoding)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorTextWriter"/>.
+            </summary>
+            <param name="unbufferedWriter">The <see cref="T:System.IO.TextWriter"/> to write output to when this instance
+            is no longer buffering.</param>
+            <param name="encoding">The character <see cref="P:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Encoding"/> in which the output is written.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Encoding">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.IsBuffering">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Write(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Write(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Write(System.Char[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Write(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteAsync(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteAsync(System.Char[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLine">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLine(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLineAsync(System.Char)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLineAsync(System.Char[],System.Int32,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLineAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.WriteLineAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.Flush">
+            <summary>
+            Copies the buffered content to the unbuffered writer and invokes flush on it.
+            Additionally causes this instance to no longer buffer and direct all write operations
+            to the unbuffered writer.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.FlushAsync">
+            <summary>
+            Copies the buffered content to the unbuffered writer and invokes flush on it.
+            Additionally causes this instance to no longer buffer and direct all write operations
+            to the unbuffered writer.
+            </summary>
+            <returns>A <see cref="T:System.Threading.Tasks.Task"/> that represents the asynchronous copy and flush operations.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.CopyTo(System.IO.TextWriter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorTextWriter.CopyToAsync(System.IO.TextWriter)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorView">
+            <summary>
+            Default implementation for <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorView"/> that executes one or more <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorPage"/> 
+            instances as part of view rendering.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorView.#ctor(Microsoft.AspNet.Mvc.Razor.IRazorPageFactory,Microsoft.AspNet.Mvc.Razor.IRazorPageActivator,Microsoft.AspNet.Mvc.Razor.IViewStartProvider)">
+            <summary>
+            Initializes a new instance of RazorView
+            </summary>
+            <param name="pageFactory">The view factory used to instantiate layout and _ViewStart pages.</param>
+            <param name="pageActivator">The <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPageActivator"/> used to activate pages.</param>
+            <param name="viewStartProvider">The <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewStartProvider"/> used for discovery of _ViewStart
+            pages</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorView.Contextualize(Microsoft.AspNet.Mvc.Razor.IRazorPage,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorView.RenderAsync(Microsoft.AspNet.Mvc.ViewContext)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine">
+            <summary>
+            Represents a view engine that is used to render a page that uses the Razor syntax.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorViewEngine.#ctor(Microsoft.AspNet.Mvc.Razor.IRazorPageFactory,Microsoft.AspNet.Mvc.Razor.OptionDescriptors.IViewLocationExpanderProvider,Microsoft.AspNet.Mvc.Razor.IViewLocationCache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine" /> class.
+            </summary>
+            <param name="pageFactory">The page factory used for creating <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPage"/> instances.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorViewEngine.ViewLocationFormats">
+            <summary>
+            Gets the locations where this instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> will search for views.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorViewEngine.AreaViewLocationFormats">
+            <summary>
+            Gets the locations where this instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> will search for views within an
+            area.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorViewEngine.FindView(Microsoft.AspNet.Mvc.ActionContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorViewEngine.FindPartialView(Microsoft.AspNet.Mvc.ActionContext,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext">
+            <summary>
+            A context for containing information for <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext.ActionContext">
+            <summary>
+            Gets the <see cref="P:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext.ActionContext"/> for the current executing action.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext.ViewName">
+            <summary>
+            Gets the view name 
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext.Values">
+            <summary>
+            Gets or sets the <see cref="T:System.Collections.Generic.IDictionary`2"/> that is populated with values as part of
+            <see cref="M:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander.PopulateValues(Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderContext)"/>.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ViewStartProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ViewStartProvider.GetViewStartPages(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.VirtualPathRazorPageFactory">
+            <summary>
+            Represents a <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorPageFactory"/> that creates <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorPage"/> instances
+            from razor files in the file system.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.VirtualPathRazorPageFactory.CreateInstance(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.CompilationFailedException">
+            <summary>
+            An exception thrown when accessing the result of a failed compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.#ctor(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.Razor.CompilationMessage})">
+            <summary>
+            Instantiates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationFailedException"/>.
+            </summary>
+            <param name="filePath">The path of the Razor source file that was compiled.</param>
+            <param name="fileContent">The contents of the Razor source file.</param>
+            <param name="compiledContent">The generated C# content that was compiled.</param>
+            <param name="messages">A sequence of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/> encountered
+            during compilation.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.FilePath">
+            <summary>
+            Gets the path of the Razor source file that produced the compilation failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.Messages">
+            <summary>
+            Gets a sequence of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/> instances encountered during compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.FileContent">
+            <summary>
+            Gets the content of the Razor source file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.CompiledContent">
+            <summary>
+            Gets the generated C# content that was compiled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationFailedException.Message">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage">
+            <summary>
+            Represents a message encountered during compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationMessage.#ctor(System.String)">
+            <summary>
+            Initializes a <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/> with the specified message.
+            </summary>
+            <param name="message">A message <see cref="T:System.String"/> produced from compilation.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationMessage.Message">
+            <summary>
+            Gets a message produced from compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationMessage.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"/> representation of this instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/>.
+            </summary>
+            <returns>A <see cref="T:System.String"/> representing this <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/> instance.</returns>
+            <remarks>Returns same value as <see cref="P:Microsoft.AspNet.Mvc.Razor.CompilationMessage.Message"/>.</remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.CompilationResult">
+            <summary>
+            Represents the result of compilation.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationResult.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationResult.FilePath">
+            <summary>
+            Gets the path of the Razor file that was compiled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationResult.Messages">
+            <summary>
+            Gets a sequence of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationMessage"/> instances encountered during compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationResult.CompiledContent">
+            <summary>
+            Gets (or sets in derived types) the generated C# content that was compiled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilationResult.CompiledType">
+            <summary>
+            Gets (or sets in derived types) the type produced as a result of compilation.
+            </summary>
+            <exception cref="T:Microsoft.AspNet.Mvc.Razor.CompilationFailedException">An error occured during compilation.</exception>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationResult.Failed(Microsoft.AspNet.FileSystems.IFileInfo,System.String,System.Collections.Generic.IEnumerable{Microsoft.AspNet.Mvc.Razor.CompilationMessage})">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/> that represents a failure in compilation.
+            </summary>
+            <param name="fileInfo">The <see cref="T:Microsoft.AspNet.FileSystems.IFileInfo"/> for the Razor file that was compiled.</param>
+            <param name="compilationContent">The generated C# content to be compiled.</param>
+            <param name="messages">The sequence of failure messages encountered during compilation.</param>
+            <returns>A CompilationResult instance representing a failure.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilationResult.Successful(System.Type)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/> that represents a success in compilation.
+            </summary>
+            <param name="type">The compiled type.</param>
+            <returns>A CompilationResult instance representing a success.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.CompilerCache">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilerCache.#ctor(Microsoft.AspNet.Mvc.IAssemblyProvider)">
+            <summary>
+            Sets up the runtime compilation cache.
+            </summary>
+            <param name="provider">
+            An <see cref="T:Microsoft.AspNet.Mvc.IAssemblyProvider"/> representing the assemblies
+            used to search for pre-compiled views.
+            </param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilerCache.GetOrAdd(Microsoft.AspNet.Mvc.Razor.RelativeFileInfo,System.Boolean,System.Func{Microsoft.AspNet.Mvc.Razor.CompilationResult})">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry">
+            <summary>
+            An entry in <see cref="T:Microsoft.AspNet.Mvc.Razor.ICompilerCache"/> that contain metadata about precompiled and dynamically compiled file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.#ctor(Microsoft.AspNet.Mvc.Razor.RazorFileInfo,System.Type)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry"/> for a file that was precompiled.
+            </summary>
+            <param name="info">Metadata about the precompiled file.</param>
+            <param name="compiledType">The compiled <see cref="T:System.Type"/>.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.#ctor(Microsoft.AspNet.Mvc.Razor.RelativeFileInfo,System.Type,System.Boolean)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry"/> for a file that was dynamically compiled.
+            </summary>
+            <param name="info">Metadata about the file that was compiled.</param>
+            <param name="compiledType">The compiled <see cref="T:System.Type"/>.</param>
+            <param name="isInstrumented">Flag that indicates that the file was generated with instrumentation
+            enabled.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.CompiledType">
+            <summary>
+            Gets the <see cref="T:System.Type"/> produced as a result of compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.RelativePath">
+            <summary>
+            Gets the path of the compiled file relative to the root of the application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.Length">
+            <summary>
+            Gets the size of file (in bytes) on disk.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.LastModified">
+            <summary>
+            Gets the last modified <see cref="T:System.DateTime"/> for the file that was compiled at the time of compilation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.Hash">
+            <summary>
+            Gets the file hash, should only be available for pre compiled files.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.IsPreCompiled">
+            <summary>
+            Gets a flag that indicates if the file is precompiled.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.IsInstrumented">
+            <summary>
+            Gets a flag that indiciates if the page execution in <see cref="P:Microsoft.AspNet.Mvc.Razor.CompilerCacheEntry.CompiledType"/> is instrumeted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ExpiringFileInfoCache">
+            <summary>
+            A default implementation for the <see cref="T:Microsoft.AspNet.Mvc.Razor.IFileInfoCache"/> interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ExpiringFileInfoCache.GetFileInfo(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ICompilationService">
+            <summary>
+            Provides methods for compilation of a Razor page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ICompilationService.Compile(Microsoft.AspNet.FileSystems.IFileInfo,System.String)">
+            <summary>
+            Compiles content and returns the result of compilation.
+            </summary>
+            <param name="fileInfo">The <see cref="T:Microsoft.AspNet.FileSystems.IFileInfo"/> for the Razor file that was compiled.</param>
+            <param name="compilationContent">The generated C# content to be compiled.</param>
+            <returns>
+            A <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/> representing the result of compilation.
+            </returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ICompilerCache">
+            <summary>
+            Caches the result of runtime compilation for the duration of the app lifetime.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ICompilerCache.GetOrAdd(Microsoft.AspNet.Mvc.Razor.RelativeFileInfo,System.Boolean,System.Func{Microsoft.AspNet.Mvc.Razor.CompilationResult})">
+            <summary>
+            Get an existing compilation result, or create and add a new one if it is
+            not available in the cache.
+            </summary>
+            <param name="fileInfo">A <see cref="T:Microsoft.AspNet.Mvc.Razor.RelativeFileInfo"/> representing the file.</param>
+            <param name="enableInstrumentation"><see langword="true"/> to generate instrumentation.</param>
+            <param name="compile">An delegate that will generate a compilation result.</param>
+            <returns>A cached <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/>.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IFileInfoCache">
+            <summary>
+            Provides cached access to file infos.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IFileInfoCache.GetFileInfo(System.String)">
+            <summary>
+            Returns a cached <see cref="T:Microsoft.AspNet.FileSystems.IFileInfo" /> for a given path.
+            </summary>
+            <param name="virtualPath">The virtual path.</param>
+            <returns>The cached <see cref="T:Microsoft.AspNet.FileSystems.IFileInfo"/>.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.Compilation.RoslynCompilationService">
+            <summary>
+            A type that uses Roslyn to compile C# content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Compilation.RoslynCompilationService.#ctor(Microsoft.Framework.Runtime.IApplicationEnvironment,Microsoft.Framework.Runtime.IAssemblyLoadContextAccessor,Microsoft.Framework.Runtime.ILibraryManager,Microsoft.AspNet.Mvc.Razor.IMvcRazorHost)">
+            <summary>
+            Initalizes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.Razor.Compilation.RoslynCompilationService"/> class.
+            </summary>
+            <param name="environment">The environment for the executing application.</param>
+            <param name="loaderEngine">The loader used to load compiled assemblies.</param>
+            <param name="libraryManager">The library manager that provides export and reference information.</param>
+            <param name="host">The <see cref="T:Microsoft.AspNet.Mvc.Razor.IMvcRazorHost"/> that was used to generate the code.</param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Compilation.RoslynCompilationService.Compile(Microsoft.AspNet.FileSystems.IFileInfo,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.UncachedCompilationResult">
+            <summary>
+            Represents the result of compilation that does not come from the <see cref="T:Microsoft.AspNet.Mvc.Razor.ICompilerCache" />.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.UncachedCompilationResult.Successful(System.Type,System.String)">
+            <summary>
+            Creates a <see cref="T:Microsoft.AspNet.Mvc.Razor.UncachedCompilationResult"/> that represents a success in compilation.
+            </summary>
+            <param name="type">The compiled type.</param>
+            <param name="compiledContent">The generated C# content that was compiled.</param>
+            <returns>An <see cref="T:Microsoft.AspNet.Mvc.Razor.UncachedCompilationResult"/> instance that indicates a successful
+            compilation.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.DefaultViewLocationExpanderProvider">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.DefaultViewLocationExpanderProvider.#ctor(Microsoft.Framework.OptionsModel.IOptions{Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions},Microsoft.Framework.DependencyInjection.ITypeActivator,System.IServiceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.DefaultViewLocationExpanderProvider"/> class.
+            </summary>
+            <param name="options">An accessor to the <see cref="T:Microsoft.AspNet.Mvc.MvcOptions"/> configured for this application.</param>
+            <param name="typeActivator">An <see cref="T:Microsoft.Framework.DependencyInjection.ITypeActivator"/> instance used to instantiate types.</param>
+            <param name="serviceProvider">A <see cref="T:System.IServiceProvider"/> instance that retrieves services from the 
+            service collection.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.DefaultViewLocationExpanderProvider.ViewLocationExpanders">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.IViewLocationExpanderProvider">
+            <summary>
+            Provides an activated collection of <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> instances.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.IViewLocationExpanderProvider.ViewLocationExpanders">
+            <summary>
+            Gets a collection of activated <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> instances.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor">
+            <summary>
+            Encapsulates information that describes an <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor.#ctor(System.Type)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.
+            </summary>
+            <param name="type">A <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> type that the descriptor represents.
+            </param>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor.#ctor(Microsoft.AspNet.Mvc.Razor.IViewLocationExpander)">
+            <summary>
+            Creates a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.
+            </summary>
+            <param name="viewLocationExpander">An instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/>
+            that the descriptor represents.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions">
+            <summary>
+            Provides programmatic configuration for the default <see cref="T:Microsoft.AspNet.Mvc.Rendering.IViewEngine"/>.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions.ExpirationBeforeCheckingFilesOnDisk">
+            <summary>
+            Controls the <see cref="T:Microsoft.AspNet.Mvc.Razor.ExpiringFileInfoCache" /> caching behavior.
+            </summary>
+            <remarks>
+            <see cref="T:System.TimeSpan"/> of <see cref="F:System.TimeSpan.Zero"/> or less, means no caching.
+            <see cref="T:System.TimeSpan"/> of <see cref="F:System.TimeSpan.MaxValue"/> means indefinite caching.
+            </remarks>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions.ViewLocationExpanders">
+            <summary>
+            Get a <see cref="T:System.Collections.Generic.IList`1"/> of descriptors for <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander" />s used by this
+            application.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions.FileSystem">
+            <summary>
+            Gets or sets the <see cref="T:Microsoft.AspNet.FileSystems.IFileSystem" /> used by <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngine"/> to locate Razor files on
+            disk.
+            </summary>
+            <remarks>
+            At startup, this is initialized to an instance of <see cref="T:Microsoft.AspNet.FileSystems.PhysicalFileSystem"/> that is rooted at the
+            application root.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderDescriptorExtensions">
+            <summary>
+            Extension methods for adding view location expanders to a collection.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderDescriptorExtensions.Add(System.Collections.Generic.IList{Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor},System.Type)">
+            <summary>
+            Adds a type representing a <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> to <paramref name="descriptors"/>.
+            </summary>
+            <param name="descriptors">A list of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.</param>
+            <param name="viewLocationExpanderType">Type representing an <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/></param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/> representing the added instance.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderDescriptorExtensions.Insert(System.Collections.Generic.IList{Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor},System.Int32,System.Type)">
+            <summary>
+            Inserts a type representing a <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> in to <paramref name="descriptors"/> at
+            the specified <paramref name="index"/>.
+            </summary>
+            <param name="descriptors">A list of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.</param>
+            <param name="index">The zero-based index at which <paramref name="viewLocationExpanderType"/> 
+            should be inserted.</param>
+            <param name="viewLocationExpanderType">Type representing an <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/></param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/> representing the inserted instance.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderDescriptorExtensions.Add(System.Collections.Generic.IList{Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor},Microsoft.AspNet.Mvc.Razor.IViewLocationExpander)">
+            <summary>
+            Adds an <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> to <paramref name="descriptors"/>.
+            </summary>
+            <param name="descriptors">A list of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.</param>
+            <param name="viewLocationExpander">An <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> instance.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/> representing the added instance.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.ViewLocationExpanderDescriptorExtensions.Insert(System.Collections.Generic.IList{Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor},System.Int32,Microsoft.AspNet.Mvc.Razor.IViewLocationExpander)">
+            <summary>
+            Insert an <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> in to <paramref name="descriptors"/> at the specified
+            <paramref name="index"/>.
+            </summary>
+            <param name="descriptors">A list of <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/>.</param>
+            <param name="index">The zero-based index at which <paramref name="viewLocationExpander"/> 
+            should be inserted.</param>
+            <param name="viewLocationExpander">An <see cref="T:Microsoft.AspNet.Mvc.Razor.IViewLocationExpander"/> instance.</param>
+            <returns>A <see cref="T:Microsoft.AspNet.Mvc.Razor.OptionDescriptors.ViewLocationExpanderDescriptor"/> representing the added instance.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.ArgumentCannotBeNullOrEmpty">
+            <summary>
+            The value cannot be null or empty.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatArgumentCannotBeNullOrEmpty">
+            <summary>
+            The value cannot be null or empty.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.CompilationFailed">
+            <summary>
+            Compilation for '{0}' failed:
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatCompilationFailed(System.Object)">
+            <summary>
+            Compilation for '{0}' failed:
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.FlushPointCannotBeInvoked">
+            <summary>
+            '{0}' cannot be invoked when a Layout page is set to be executed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatFlushPointCannotBeInvoked(System.Object)">
+            <summary>
+            '{0}' cannot be invoked when a Layout page is set to be executed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.Instrumentation_WriterMustBeBufferedTextWriter">
+            <summary>
+            The {0} returned by '{1}' must be an instance of '{2}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatInstrumentation_WriterMustBeBufferedTextWriter(System.Object,System.Object,System.Object)">
+            <summary>
+            The {0} returned by '{1}' must be an instance of '{2}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.LayoutCannotBeLocated">
+            <summary>
+            The layout view '{0}' could not be located.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatLayoutCannotBeLocated(System.Object)">
+            <summary>
+            The layout view '{0}' could not be located.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.LayoutCannotBeRendered">
+            <summary>
+            A layout page cannot be rendered after '{0}' has been invoked.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatLayoutCannotBeRendered(System.Object)">
+            <summary>
+            A layout page cannot be rendered after '{0}' has been invoked.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.MvcRazorCodeParser_CannotHaveModelAndInheritsKeyword">
+            <summary>
+            The 'inherits' keyword is not allowed when a '{0}' keyword is used.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatMvcRazorCodeParser_CannotHaveModelAndInheritsKeyword(System.Object)">
+            <summary>
+            The 'inherits' keyword is not allowed when a '{0}' keyword is used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.MvcRazorCodeParser_ModelKeywordMustBeFollowedByTypeName">
+            <summary>
+            The '{0}' keyword must be followed by a type name on the same line.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatMvcRazorCodeParser_ModelKeywordMustBeFollowedByTypeName(System.Object)">
+            <summary>
+            The '{0}' keyword must be followed by a type name on the same line.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.MvcRazorCodeParser_OnlyOneModelStatementIsAllowed">
+            <summary>
+            Only one '{0}' statement is allowed in a file.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatMvcRazorCodeParser_OnlyOneModelStatementIsAllowed(System.Object)">
+            <summary>
+            Only one '{0}' statement is allowed in a file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.RazorPage_ThereIsNoActiveWritingScopeToEnd">
+            <summary>
+            There is no active writing scope to end.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatRazorPage_ThereIsNoActiveWritingScopeToEnd">
+            <summary>
+            There is no active writing scope to end.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.RazorPage_YouCannotFlushWhileInAWritingScope">
+            <summary>
+            You cannot flush while inside a writing scope.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatRazorPage_YouCannotFlushWhileInAWritingScope">
+            <summary>
+            You cannot flush while inside a writing scope.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.RazorPage_NullModelMetadata">
+            <summary>
+            The {0} was unable to provide metadata for expression '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatRazorPage_NullModelMetadata(System.Object,System.Object)">
+            <summary>
+            The {0} was unable to provide metadata for expression '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.RazorPage_MethodCannotBeCalled">
+            <summary>
+            {0} can only be called from a layout page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatRazorPage_MethodCannotBeCalled(System.Object)">
+            <summary>
+            {0} can only be called from a layout page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.RenderBodyNotCalled">
+            <summary>
+            {0} must be called from a layout page.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatRenderBodyNotCalled(System.Object)">
+            <summary>
+            {0} must be called from a layout page.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.SectionAlreadyDefined">
+            <summary>
+            Section '{0}' is already defined.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatSectionAlreadyDefined(System.Object)">
+            <summary>
+            Section '{0}' is already defined.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.SectionAlreadyRendered">
+            <summary>
+            The section named '{0}' has already been rendered.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatSectionAlreadyRendered(System.Object)">
+            <summary>
+            The section named '{0}' has already been rendered.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.SectionNotDefined">
+            <summary>
+            Section '{0}' is not defined.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatSectionNotDefined(System.Object)">
+            <summary>
+            Section '{0}' is not defined.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.SectionsNotRendered">
+            <summary>
+            The following sections have been defined but have not been rendered: '{0}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatSectionsNotRendered(System.Object)">
+            <summary>
+            The following sections have been defined but have not been rendered: '{0}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.ViewCannotBeActivated">
+            <summary>
+            View of type '{0}' cannot be activated by '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatViewCannotBeActivated(System.Object,System.Object)">
+            <summary>
+            View of type '{0}' cannot be activated by '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.ViewContextMustBeSet">
+            <summary>
+            '{0} must be set to access '{1}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatViewContextMustBeSet(System.Object,System.Object)">
+            <summary>
+            '{0} must be set to access '{1}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.ViewLocationCache_KeyMustBeString">
+            <summary>
+            '{0}' must be a {1} that is generated as result of the call to '{2}'.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatViewLocationCache_KeyMustBeString(System.Object,System.Object,System.Object)">
+            <summary>
+            '{0}' must be a {1} that is generated as result of the call to '{2}'.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.Resources.ViewMustBeContextualized">
+            <summary>
+            The '{0}' method must be called before '{1}' can be invoked.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.Resources.FormatViewMustBeContextualized(System.Object,System.Object)">
+            <summary>
+            The '{0}' method must be called before '{1}' can be invoked.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.IRazorCompilationService">
+            <summary>
+            Specifies the contracts for a service that compiles Razor files.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.IRazorCompilationService.Compile(Microsoft.AspNet.Mvc.Razor.RelativeFileInfo,System.Boolean)">
+            <summary>
+            Compiles the razor file located at <paramref name="fileInfo"/>.
+            </summary>
+            <param name="fileInfo">A <see cref="T:Microsoft.AspNet.Mvc.Razor.RelativeFileInfo"/> instance that represents the file to compile.
+            </param>
+            <param name="isInstrumented">Indicates that the page should be instrumented.</param>
+            <returns>
+            A <see cref="T:Microsoft.AspNet.Mvc.Razor.CompilationResult"/> that represents the results of parsing and compiling the file.
+            </returns>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.Razor.RazorCompilationService">
+            <summary>
+            Default implementation of <see cref="T:Microsoft.AspNet.Mvc.Razor.IRazorCompilationService"/>.
+            </summary>
+            <remarks>
+            This class must be registered as a singleton service for the caching to work.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Razor.RazorCompilationService.Compile(Microsoft.AspNet.Mvc.Razor.RelativeFileInfo,System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorFileInfo.FullTypeName">
+            <summary>
+            Type name including namespace.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorFileInfo.LastModified">
+            <summary>
+            Last modified at compilation time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorFileInfo.Length">
+            <summary>
+            The length of the file in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorFileInfo.RelativePath">
+            <summary>
+            Path to to the file relative to the application base.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Razor.RazorFileInfo.Hash">
+            <summary>
+            A hash of the file content.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.CopyOnWriteDictionary`2">
+            <summary>
+            A <see cref="T:System.Collections.Generic.IDictionary`2"/> that defers creating a shallow copy of the source dictionary until
+             a mutative operation has been performed on it.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF8EncodingWithoutBOM">
+            <summary>
+            Returns UTF8 Encoding without BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF16EncodingLittleEndian">
+            <summary>
+            Returns UTF16 Encoding which uses littleEndian byte order with BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyActivator`1.GetPropertiesToActivate(System.Type,System.Type,System.Func{System.Reflection.PropertyInfo,Microsoft.AspNet.Mvc.PropertyActivator{`0}})">
+            <summary>
+            Returns a list of properties on a type that are decorated with
+            the specified activateAttributeType and have setters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.#ctor(System.Reflection.PropertyInfo)">
+             <summary>
+             Initializes a fast property helper.
+            
+             This constructor does not cache the helper. For caching, use GetProperties.
+             </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.GetProperties(System.Object)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            underlying type.
+            </summary>
+            <param name="instance">the instance to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the underlying type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.GetProperties(System.Type)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            specified type.
+            </summary>
+            <param name="type">the type to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.MakeFastPropertyGetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property getter. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.MakeFastPropertySetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property setter for reference types. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the setter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed. This only works for reference types.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.TaskHelper">
+            <summary>
+            Utility methods for dealing with <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted(System.Threading.Tasks.Task)">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted. 
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling Wait() on the <paramref name="task" /> if it is not completed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted. 
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling <see cref="P:System.Threading.Tasks.Task`1.Result"/> on the 
+            <paramref name="task"/> if it is not completed.
+            </remarks>
+        </member>
+    </members>
+</doc>

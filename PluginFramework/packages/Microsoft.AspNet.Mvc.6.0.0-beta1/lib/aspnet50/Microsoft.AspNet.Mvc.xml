@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Mvc.MvcOptionsSetup">
+            <summary>
+            Sets up default options for <see cref="T:Microsoft.AspNet.Mvc.MvcOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.MvcOptionsSetup.ConfigureMvc(Microsoft.AspNet.Mvc.MvcOptions)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.RazorViewEngineOptionsSetup">
+            <summary>
+            Sets up default options for <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.RazorViewEngineOptionsSetup.#ctor(Microsoft.Framework.Runtime.IApplicationEnvironment)">
+            <summary>
+            Initializes a new instance of <see cref="T:Microsoft.AspNet.Mvc.Razor.RazorViewEngineOptions"/>.
+            </summary>
+            <param name="applicationEnvironment"><see cref="T:Microsoft.Framework.Runtime.IApplicationEnvironment"/> for the application.</param>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.Resources.UnableToFindServices">
+            <summary>
+            Unable to find the required services. Please add all the required services by calling AddMvc() before calling UseMvc()/UseServices() in the Application Startup.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.Resources.FormatUnableToFindServices">
+            <summary>
+            Unable to find the required services. Please add all the required services by calling AddMvc() before calling UseMvc()/UseServices() in the Application Startup.
+            </summary>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.CopyOnWriteDictionary`2">
+            <summary>
+            A <see cref="T:System.Collections.Generic.IDictionary`2"/> that defers creating a shallow copy of the source dictionary until
+             a mutative operation has been performed on it.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF8EncodingWithoutBOM">
+            <summary>
+            Returns UTF8 Encoding without BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.Encodings.UTF16EncodingLittleEndian">
+            <summary>
+            Returns UTF16 Encoding which uses littleEndian byte order with BOM and throws on invalid bytes.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyActivator`1.GetPropertiesToActivate(System.Type,System.Type,System.Func{System.Reflection.PropertyInfo,Microsoft.AspNet.Mvc.PropertyActivator{`0}})">
+            <summary>
+            Returns a list of properties on a type that are decorated with
+            the specified activateAttributeType and have setters.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.#ctor(System.Reflection.PropertyInfo)">
+             <summary>
+             Initializes a fast property helper.
+            
+             This constructor does not cache the helper. For caching, use GetProperties.
+             </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.GetProperties(System.Object)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            underlying type.
+            </summary>
+            <param name="instance">the instance to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the underlying type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.GetProperties(System.Type)">
+            <summary>
+            Creates and caches fast property helpers that expose getters for every public get property on the
+            specified type.
+            </summary>
+            <param name="type">the type to extract property accessors for.</param>
+            <returns>a cached array of all public property getters from the type of target instance.
+            </returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.MakeFastPropertyGetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property getter. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the getter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.PropertyHelper.MakeFastPropertySetter(System.Reflection.PropertyInfo)">
+            <summary>
+            Creates a single fast property setter for reference types. The result is not cached.
+            </summary>
+            <param name="propertyInfo">propertyInfo to extract the setter for.</param>
+            <returns>a fast getter.</returns>
+            <remarks>
+            This method is more memory efficient than a dynamically compiled lambda, and about the
+            same speed. This only works for reference types.
+            </remarks>
+        </member>
+        <member name="T:Microsoft.AspNet.Mvc.TaskHelper">
+            <summary>
+            Utility methods for dealing with <see cref="T:System.Threading.Tasks.Task"/>.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted(System.Threading.Tasks.Task)">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted. 
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling Wait() on the <paramref name="task" /> if it is not completed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.TaskHelper.WaitAndThrowIfFaulted``1(System.Threading.Tasks.Task{``0})">
+            <summary>
+            Waits for the task to complete and throws the first faulting exception if the task is faulted. 
+            It preserves the original stack trace when throwing the exception.
+            </summary>
+            <remarks>
+            Invoking this method is equivalent to calling <see cref="P:System.Threading.Tasks.Task`1.Result"/> on the 
+            <paramref name="task"/> if it is not completed.
+            </remarks>
+        </member>
+    </members>
+</doc>

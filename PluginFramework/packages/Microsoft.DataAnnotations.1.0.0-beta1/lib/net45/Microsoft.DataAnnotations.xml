@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.DataAnnotations</name>
+    </assembly>
+    <members>
+        <member name="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute">
+            <summary>
+            When this attribute is placed on a property it indicates that the database column to which the
+            property is mapped has an index.
+            </summary>
+            <remarks>
+            This attribute is used by Entity Framework Migrations to create indexes on mapped database columns.
+            Multi-column indexes are created by using the same index name in multiple attributes. The information
+            in these attributes is then merged together to specify the actual database index.
+            </remarks>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.#ctor">
+            <summary>
+            Creates a <see cref="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute" /> instance for an index that will be named by convention and
+            has no column order, clustering, or uniqueness specified.
+            </summary>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.#ctor(System.String)">
+            <summary>
+            Creates a <see cref="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute" /> instance for an index with the given name and
+            has no column order, clustering, or uniqueness specified.
+            </summary>
+            <param name="name">The index name.</param>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.#ctor(System.String,System.Int32)">
+            <summary>
+            Creates a <see cref="T:System.ComponentModel.DataAnnotations.Schema.IndexAttribute" /> instance for an index with the given name and column order, 
+            but with no clustering or uniqueness specified.
+            </summary>
+            <remarks>
+            Multi-column indexes are created by using the same index name in multiple attributes. The information
+            in these attributes is then merged together to specify the actual database index.
+            </remarks>
+            <param name="name">The index name.</param>
+            <param name="order">A number which will be used to determine column ordering for multi-column indexes.</param>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.Name">
+            <summary>
+            The index name.
+            </summary>
+            <remarks>
+            Multi-column indexes are created by using the same index name in multiple attributes. The information
+            in these attributes is then merged together to specify the actual database index.
+            </remarks>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.Order">
+            <summary>
+            A number which will be used to determine column ordering for multi-column indexes. This will be -1 if no
+            column order has been specified.
+            </summary>
+            <remarks>
+            Multi-column indexes are created by using the same index name in multiple attributes. The information
+            in these attributes is then merged together to specify the actual database index.
+            </remarks>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsClustered">
+            <summary>
+            Set this property to true to define a clustered index. Set this property to false to define a 
+            non-clustered index.
+            </summary>
+            <remarks>
+            The value of this property is only relevant if <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsClusteredConfigured"/> returns true.
+            If <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsClusteredConfigured"/> returns false, then the value of this property is meaningless.
+            </remarks>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsClusteredConfigured">
+            <summary>
+            Returns true if <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsClustered"/> has been set to a value.
+            </summary>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsUnique">
+            <summary>
+            Set this property to true to define a unique index. Set this property to false to define a 
+            non-unique index.
+            </summary>
+            <remarks>
+            The value of this property is only relevant if <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsUniqueConfigured"/> returns true.
+            If <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsUniqueConfigured"/> returns false, then the value of this property is meaningless.
+            </remarks>
+        </member>
+        <member name="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsUniqueConfigured">
+            <summary>
+            Returns true if <see cref="P:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.IsUnique"/> has been set to a value.
+            </summary>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.Equals(System.ComponentModel.DataAnnotations.Schema.IndexAttribute)">
+            <summary>
+            Returns true if this attribute specifies the same name and configuration as the given attribute.
+            </summary>
+            <param name="other">The attribute to compare.</param>
+            <returns>True if the other object is equal to this object; otherwise false.</returns>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.Equals(System.Object)">
+            <summary>
+            Returns true if this attribute specifies the same name and configuration as the given attribute.
+            </summary>
+            <param name="obj">The attribute to compare.</param>
+            <returns>True if the other object is equal to this object; otherwise false.</returns>
+        </member>
+        <member name="M:System.ComponentModel.DataAnnotations.Schema.IndexAttribute.GetHashCode">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

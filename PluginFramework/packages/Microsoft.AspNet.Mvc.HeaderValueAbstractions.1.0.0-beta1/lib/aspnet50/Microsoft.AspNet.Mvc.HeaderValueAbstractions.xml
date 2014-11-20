@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Mvc.HeaderValueAbstractions</name>
+    </assembly>
+    <members>
+        <member name="F:Microsoft.AspNet.Mvc.HeaderValueAbstractions.HttpHeaderUtilitites.Match">
+            <summary>
+            Quality factor to indicate a perfect match.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.HeaderValueAbstractions.HttpHeaderUtilitites.NoMatch">
+            <summary>
+            Quality factor to indicate no match.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.HeaderValueAbstractions.MediaTypeHeaderValue.IsSubsetOf(Microsoft.AspNet.Mvc.HeaderValueAbstractions.MediaTypeHeaderValue)">
+            <summary>
+            Determines whether this instance is a subset of passed <see cref="T:Microsoft.AspNet.Mvc.HeaderValueAbstractions.MediaTypeHeaderValue"/>.
+            If the media type and media type parameters of this media type are all present 
+            and match those of <paramref name="otherMediaType"/> then it is a match even though 
+            <paramref name="otherMediaType"/> may have additional parameters.
+            </summary>
+            <param name="mediaType">The first media type.</param>
+            <param name="otherMediaType">The second media type.</param>
+            <returns><c>true</c> if this is a subset of <paramref name="otherMediaType"/>; false otherwise.</returns>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.InvalidAcceptCharset">
+            <summary>
+            Invalid Argument. Accept Charset '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.FormatInvalidAcceptCharset(System.Object)">
+            <summary>
+            Invalid Argument. Accept Charset '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.InvalidAcceptHeader">
+            <summary>
+            Invalid Argument. Accept Header '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.FormatInvalidAcceptHeader(System.Object)">
+            <summary>
+            Invalid Argument. Accept Header '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.InvalidContentType">
+            <summary>
+            Invalid Argument. Content type '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Mvc.HeaderValueAbstractions.Resources.FormatInvalidContentType(System.Object)">
+            <summary>
+            Invalid Argument. Content type '{0}' could not be parsed.
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.MediaTypeHeaderValueRange.None">
+            <summary>
+            Not a media type range
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.MediaTypeHeaderValueRange.SubtypeMediaRange">
+            <summary>
+            A subtype media range, e.g. "application/*".
+            </summary>
+        </member>
+        <member name="F:Microsoft.AspNet.Mvc.MediaTypeHeaderValueRange.AllMediaRange">
+            <summary>
+            An all media range, e.g. "*/*".
+            </summary>
+        </member>
+    </members>
+</doc>

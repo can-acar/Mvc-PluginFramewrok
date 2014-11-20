@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.WebUtilities</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.AspNet.WebUtilities.FormHelpers.ParseForm(System.String)">
+            <summary>
+            Parses an HTTP form body.
+            </summary>
+            <param name="text">The HTTP form body to parse.</param>
+            <returns>The <see cref="T:Microsoft.Owin.IFormCollection" /> object containing the parsed HTTP form body.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.QueryHelpers.AddQueryString(System.String,System.String,System.String)">
+            <summary>
+            Append the given query key and value to the URI.
+            </summary>
+            <param name="uri">The base URI.</param>
+            <param name="name">The name of the query key.</param>
+            <param name="value">The query value.</param>
+            <returns>The combined result.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.QueryHelpers.AddQueryString(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Append the given query keys and values to the uri.
+            </summary>
+            <param name="uri">The base uri.</param>
+            <param name="queryString">A collection of name value query pairs to append.</param>
+            <returns>The combine result.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.QueryHelpers.ParseQuery(System.String)">
+            <summary>
+            Parse a query string into its component key and value parts.
+            </summary>
+            <param name="text">The raw query string value, with or without the leading '?'.</param>
+            <returns>A collection of parsed keys and values.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.WebUtilities.WebEncoders">
+            <summary>
+            Contains utility APIs to assist with common encoding and decoding operations.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.WebEncoders.Base64UrlDecode(System.String)">
+            <summary>
+            Decodes a base64url-encoded string.
+            </summary>
+            <param name="input">The base64url-encoded input to decode.</param>
+            <returns>The base64url-decoded form of the input.</returns>
+            <remarks>
+            The input must not contain any whitespace or padding characters.
+            Throws FormatException if the input is malformed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.WebEncoders.Base64UrlDecode(System.String,System.Int32,System.Int32)">
+            <summary>
+            Decodes a base64url-encoded substring of a given string.
+            </summary>
+            <param name="input">A string containing the base64url-encoded input to decode.</param>
+            <param name="offset">The position in <paramref name="input"/> at which decoding should begin.</param>
+            <param name="count">The number of characters in <paramref name="input"/> to decode.</param>
+            <returns>The base64url-decoded form of the input.</returns>
+            <remarks>
+            The input must not contain any whitespace or padding characters.
+            Throws FormatException if the input is malformed.
+            </remarks>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.WebEncoders.Base64UrlEncode(System.Byte[])">
+            <summary>
+            Encodes an input using base64url encoding.
+            </summary>
+            <param name="input">The binary input to encode.</param>
+            <returns>The base64url-encoded form of the input.</returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.WebEncoders.Base64UrlEncode(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Encodes an input using base64url encoding.
+            </summary>
+            <param name="input">The binary input to encode.</param>
+            <param name="offset">The offset into <paramref name="input"/> at which to begin encoding.</param>
+            <param name="count">The number of bytes of <paramref name="input"/> to encode.</param>
+            <returns>The base64url-encoded form of the input.</returns>
+        </member>
+        <member name="T:Microsoft.AspNet.WebUtilities.Collections.FormCollection">
+            <summary>
+            Contains the parsed form values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.FormCollection.#ctor(System.Collections.Generic.IDictionary{System.String,System.String[]})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Microsoft.AspNet.WebUtilities.FormCollection" /> class.
+            </summary>
+            <param name="store">The store for the form.</param>
+        </member>
+        <member name="T:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection">
+            <summary>
+            Accessors for query, forms, etc.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.#ctor(System.Collections.Generic.IDictionary{System.String,System.String[]})">
+            <summary>
+            Create a new wrapper
+            </summary>
+            <param name="store"></param>
+        </member>
+        <member name="P:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.Count">
+            <summary>
+            Gets the number of elements contained in the collection.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.Keys">
+            <summary>
+            Gets a collection containing the keys.
+            </summary>
+        </member>
+        <member name="P:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.Item(System.String)">
+            <summary>
+            Get the associated value from the collection.  Multiple values will be merged.
+            Returns null if the key is not present.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.ContainsKey(System.String)">
+            <summary>
+            Determines whether the collection contains an element with the specified key.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.Get(System.String)">
+            <summary>
+            Get the associated value from the collection.  Multiple values will be merged.
+            Returns null if the key is not present.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.GetValues(System.String)">
+            <summary>
+            Get the associated values from the collection in their original format.
+            Returns null if the key is not present.
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.WebUtilities.Collections.ReadableStringCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

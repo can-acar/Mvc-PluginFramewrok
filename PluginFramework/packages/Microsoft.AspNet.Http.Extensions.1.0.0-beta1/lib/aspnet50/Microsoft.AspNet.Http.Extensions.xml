@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.AspNet.Http.Extensions</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.AspNet.Http.HttpResponseSendingExtensions">
+            <summary>
+            Convenience methods for writing to the response.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.String,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given Content-Type and body. UTF-8 encoding will be used, and the Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="text"></param>
+            <param name="contentType"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.String,System.Text.Encoding,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given Content-Type, encoding, and body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="text"></param>
+            <param name="encoding"></param>
+            <param name="contentType"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given body. UTF-8 encoding will be used, and the Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="text"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.String,System.Text.Encoding,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given encoding and body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="text"></param>
+            <param name="encoding"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.Byte[],System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given Content-Type and body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="data"></param>
+            <param name="contentType"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.ArraySegment{System.Byte},System.String,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given Content-Type and body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="data"></param>
+            <param name="contentType"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="data"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="data"></param>
+            <param name="offset"></param>
+            <param name="count"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.AspNet.Http.HttpResponseSendingExtensions.SendAsync(Microsoft.AspNet.Http.HttpResponse,System.ArraySegment{System.Byte},System.Threading.CancellationToken)">
+            <summary>
+            Sends a response with the given body. The Content-Length header will be set accordingly.
+            </summary>
+            <param name="response"></param>
+            <param name="data"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
