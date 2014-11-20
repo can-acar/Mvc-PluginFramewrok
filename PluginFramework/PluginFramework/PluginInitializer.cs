@@ -30,32 +30,26 @@ namespace PluginFramework
             var plugins = new List<IPlugin>();
             var builder = new ContainerBuilder();
             var assemblies = Directory.EnumerateFiles(PluginBasePath, "*.Module.dll", SearchOption.AllDirectories)
-                                      .Select(Assembly.LoadFile)
+                                      .Select(Assembly.LoadFrom)
                                       .ToArray();
 
-            builder.RegisterType<MenuRepository>().As<IMenuRepository>();
-
-            builder.RegisterControllers(assemblies);
-
-            builder.RegisterAssemblyTypes(assemblies).AsImplementedInterfaces().InstancePerLifetimeScope();
-
+            builder.RegisterAssemblyTypes(assemblies);
             builder.RegisterAssemblyModules(assemblies);
 
+            builder.RegisterType<MenuRepository>().As<IMenuRepository>();
+            builder.RegisterType<WidgetRepository>().As<IWidgetRepository>();
+
             builder.RegisterModelBinderProvider();
-
             builder.RegisterFilterProvider();
-
-
 
             var container = builder.Build();
             var resolver = new AutofacWebApiDependencyResolver(container);
 
-            
+
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             GlobalConfiguration.Configuration.DependencyResolver = resolver;
             foreach (var plugin in container.Resolve<IEnumerable<IPlugin>>())
             {
-                //if (plugins.All(c => c.PluginName != plugin.PluginName)) continue;
                 plugins.Add(plugin);
                 plugin.RegisterRoutes(RouteTable.Routes);
             }

@@ -19,7 +19,7 @@ namespace Web.Portal.Demo.Module
             //   .Named<IController>(GetControllerName);
 
             //builder.RegisterControllers(GetType().Assembly)
-            //   .Named<IController>(GetControllerName<AdminController>());
+            //   .Named<IController>(GetControllerName);
             builder.RegisterType<HomeController>().Named<IController>(GetControllerName<HomeController>());
             builder.RegisterType<DemoController>().Named<IController>(GetControllerName<DemoController>());
             builder.RegisterType<AdminController>().Named<IController>(GetControllerName<AdminController>());

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PluginFramework
 {
-    class Widget
+    public class Widget
     {
     }
 }

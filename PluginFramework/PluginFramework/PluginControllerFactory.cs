@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
-using Autofac.Integration.Mvc;
 
 
 namespace PluginFramework
@@ -22,25 +19,20 @@ namespace PluginFramework
         {
             var routeValue = HttpContext.Current.Request.RequestContext.RouteData.Values;
             var controller = base.GetControllerType(request_context, controller_name);
-            //if (controller != null) return controller;
-           
+            object pluginController;
 
-            var pluginController = _container.Resolve<IEnumerable<IController>>()
-                                             .ToList()
-                                             .OfType<IPluginController>()
-                                             .FirstOrDefault(c => c.ControllerName == controller_name);
-            
+            if (!routeValue.ContainsKey("module"))
+                return _container.TryResolveNamed(controller_name.UcFirst(), typeof(IController), out pluginController)
+                    ? pluginController.GetType()
+                    : controller;
+            var pluginName = (string)routeValue["module"];
 
+            if (_container.TryResolveNamed(pluginName.UcFirst(), typeof(IController), out pluginController))
+            {
+                return pluginController.GetType();
+            }
 
-
-
-            //if (_container.TryResolveNamed(controller_name, typeof(IController), out pluginController))
-            //{
-            //    return pluginController.GetType();
-
-            //}
-            //return null;
-            return (pluginController != null) ? pluginController.GetType() : controller;
+            return _container.TryResolveNamed(controller_name.UcFirst(), typeof(IController), out pluginController) ? pluginController.GetType() : controller;
         }
 
         public override void ReleaseController(IController controller)
@@ -56,6 +48,5 @@ namespace PluginFramework
             }
 
         }
-
     }
 }

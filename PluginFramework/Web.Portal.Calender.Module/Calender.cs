@@ -14,11 +14,13 @@ namespace Web.Portal.Calender.Module
         protected override void Load(ContainerBuilder plugin)
         {
             plugin.RegisterType<Calender>().As<IPlugin>();
-        
-            plugin.RegisterControllers(GetType().Assembly)
-               .Named<IController>(GetControllerName);
 
-            //plugin.RegisterType<AdminController>().Named<IController>(GetControllerName<AdminController>());
+            //plugin.RegisterControllers(GetType().Assembly)
+            //   .Named<IController>(GetControllerName);
+
+            plugin.RegisterType<CalenderController>().Named<IController>(GetControllerName<CalenderController>());
+            // plugin.RegisterControllers(GetType().Assembly)
+            //.Named<IController>(GetControllerName);
         }
 
         protected override void AddMenu(NavigationBuilder builder)

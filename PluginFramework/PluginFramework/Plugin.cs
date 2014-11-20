@@ -1,11 +1,8 @@
-﻿using System;
-using System.Reflection;
-using System.Web.Routing;
-
-
-
-namespace PluginFramework
+﻿namespace PluginFramework
 {
+    using System;
+    using System.Reflection;
+    using System.Web.Routing;
     using PluginFramework.UI;
     using Autofac;
     using Autofac.Integration.Mvc;
@@ -17,7 +14,7 @@ namespace PluginFramework
 
         protected Plugin()
         {
-            PluginAssembly = Assembly.GetAssembly(GetType());
+            PluginAssembly = GetType().Assembly;
         }
 
         protected override void Load(ContainerBuilder plugin)
@@ -26,7 +23,6 @@ namespace PluginFramework
 
         protected virtual void AddMenu(NavigationBuilder builder)
         {
-
         }
 
         public string GetControllerName<TController>()
@@ -38,6 +34,11 @@ namespace PluginFramework
         {
             return t.Name.Replace("Controller", string.Empty);
         }
+
+        public virtual void RegisterRoutes(RouteCollection route_collection)
+        {
+        }
+
         public string AssemblyName
         {
             get
@@ -45,6 +46,7 @@ namespace PluginFramework
                 return PluginAssembly.GetName().Name;
             }
         }
+
         public string PluginName
         {
             get { return AssemblyName; }
@@ -59,20 +61,6 @@ namespace PluginFramework
             set
             {
             }
-        }
-
-        public virtual void RegisterRoutes(RouteCollection route_collection)
-        {
-
-        }
-
-        public virtual void Install(ContainerBuilder builder)
-        {
-
-        }
-        public virtual void Install(IContainer builder)
-        {
-
         }
 
         public override string ToString()

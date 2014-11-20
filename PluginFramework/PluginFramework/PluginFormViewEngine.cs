@@ -29,7 +29,6 @@ namespace PluginFramework
                 "~/Areas/{2}/Views/Shared/{0}.aspx",
                 "~/Areas/{2}/Views/Shared/{0}.ascx" };
 
-            // register all forms (non-razor) view locations for each plugin (e.g. web\plugin\%assemblyname%\views)
             foreach (var plugin in plugins)
             {
                 masterLocationFormats.Add("~/Plugins/" + plugin.PluginName + "/Views/{1}/{0}.master");

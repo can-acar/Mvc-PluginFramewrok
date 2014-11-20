@@ -97,6 +97,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PluginActionAttribute.cs" />
     <Compile Include="IPlugin.cs" />
     <Compile Include="IPluginController.cs" />
     <Compile Include="NavigationBuilder.cs" />

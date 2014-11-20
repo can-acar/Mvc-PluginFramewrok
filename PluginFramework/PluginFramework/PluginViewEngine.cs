@@ -21,7 +21,6 @@ namespace PluginFramework
                 "~/Areas/{2}/Views/Shared/{0}.cshtml",
                 "~/Areas/{2}/Views/Shared/{0}.vbhtml" };
 
-            //This property contains the locations where the view engine will search to find a partial view in an area-enabled application.
             AreaPartialViewLocationFormats = new[] { 
                 "~/Areas/{2}/Views/{1}/{0}.cshtml",
                 "~/Areas/{2}/Views/{1}/{0}.vbhtml",
@@ -40,7 +39,6 @@ namespace PluginFramework
                 "~/Views/Shared/{0}.cshtml",
                 "~/Views/Shared/{0}.vbhtml" };
 
-            // register all razor view locations for each plugin (e.g. web\plugin\%assemblyname%\views)
             foreach (var plugin in plugins)
             {
                 masterLocationFormats.Add("~/Plugins/" + plugin.PluginName + "/Views/{1}/{0}.cshtml");
@@ -57,11 +55,8 @@ namespace PluginFramework
 
             }
 
-            // This property contains the locations where the view engine will search to find a view.
             ViewLocationFormats = partialViewLocationFormats.ToArray();
-            // This property contains the locations where the view engine will search to find a master view.
             MasterLocationFormats = masterLocationFormats.ToArray();
-            // This property contains the locations where the view engine will search to find a partial view.
             PartialViewLocationFormats = partialViewLocationFormats.ToArray();
         }
     }

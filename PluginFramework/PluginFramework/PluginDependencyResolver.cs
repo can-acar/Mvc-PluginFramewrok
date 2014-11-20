@@ -18,23 +18,20 @@ namespace PluginFramework
             _container = container;
         }
 
-        public object GetService(Type serviceType)
+        public object GetService(Type service_type)
         {
 
-            return
-                _container.IsRegistered(serviceType)
-                    ? _container.Resolve(serviceType)
+            return _container.IsRegistered(service_type)
+                    ? _container.Resolve(service_type)
                     : null;
         }
 
         public IEnumerable<object> GetServices(Type serviceType)
         {
 
-            Type enumerableServiceType =
-                typeof(IEnumerable<>).MakeGenericType(serviceType);
+            var enumerableServiceType = typeof(IEnumerable<>).MakeGenericType(serviceType);
 
-            object instance =
-                _container.Resolve(enumerableServiceType);
+            var instance = _container.Resolve(enumerableServiceType);
 
             return ((IEnumerable)instance).Cast<object>();
         }
