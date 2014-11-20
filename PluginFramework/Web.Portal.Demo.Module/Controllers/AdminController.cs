@@ -9,11 +9,7 @@ namespace Web.Portal.Demo.Module.Controllers
 {
     public class AdminController : PluginController
     {
-        //public AdminController()
-        //{
-        //    var repo = GetServices<IMenuRepository>();
-        //    var repos = GetServices<IMenuRepository>();
-        //}
+
         private readonly IMenuRepository _menuRepository;
         public AdminController(IMenuRepository menu_repository)
         {

@@ -101,6 +101,7 @@
     <Compile Include="App_Start\IocModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\IocConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -113,6 +114,7 @@
     <Content Include="Plugins\Web.Portal.Demo.Module\Views\Admin\Index.cshtml" />
     <Content Include="Plugins\Web.Portal.Demo.Module\Views\Home\Index.cshtml" />
     <Content Include="Plugins\Web.Portal.Demo.Module\Views\web.config" />
+    <Content Include="Views\Home\Layout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -126,6 +128,8 @@
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Shared\" />
+    <Folder Include="Views\Site\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PluginFramework.UI\PluginFramework.UI.csproj">

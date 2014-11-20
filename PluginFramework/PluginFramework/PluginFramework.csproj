@@ -99,10 +99,12 @@
   <ItemGroup>
     <Compile Include="IPlugin.cs" />
     <Compile Include="IPluginController.cs" />
+    <Compile Include="NavigationBuilder.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="PluginController.cs" />
     <Compile Include="PluginControllerFactory.cs" />
     <Compile Include="PluginDependencyResolver.cs" />
+    <Compile Include="PluginExtensions.cs" />
     <Compile Include="PluginFormViewEngine.cs" />
     <Compile Include="PluginInitializer.cs" />
     <Compile Include="PluginViewEngine.cs" />

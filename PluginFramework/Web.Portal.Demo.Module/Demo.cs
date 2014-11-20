@@ -1,9 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using Autofac;
-using Autofac.Integration.Mvc;
 using PluginFramework;
-using PluginFramework.UI.Repositories;
-using PluginFramework.UI.Repositories.Interfaces;
+using PluginFramework.UI;
 using Web.Portal.Demo.Module.Controllers;
 
 namespace Web.Portal.Demo.Module
@@ -13,21 +12,29 @@ namespace Web.Portal.Demo.Module
         protected override void Load(ContainerBuilder builder)
         {
 
-            builder.RegisterAssemblyTypes(
-                     typeof(MvcApplication).Assembly
-                 ).PropertiesAutowired();
             builder.RegisterType<Demo>().As<IPlugin>();
-            builder.RegisterType<MenuRepository>().As<IMenuRepository>();
+            //builder.RegisterType<MenuRepository>().As<IMenuRepository>();
 
-            //builder.RegisterType<HomeController>()
-            //       .As<IController>()
-            //       .Named<IController>(GetControllerName<HomeController>());
+            //builder.RegisterControllers(GetType().Assembly)
+            //   .Named<IController>(GetControllerName);
 
-            //builder.RegisterType<AdminController>()
-            //       .As<IController>().Named<IController>(GetControllerName<AdminController>());
+            //builder.RegisterControllers(GetType().Assembly)
+            //   .Named<IController>(GetControllerName<AdminController>());
+            builder.RegisterType<HomeController>().Named<IController>(GetControllerName<HomeController>());
+            builder.RegisterType<DemoController>().Named<IController>(GetControllerName<DemoController>());
+            builder.RegisterType<AdminController>().Named<IController>(GetControllerName<AdminController>());
+        }
 
-            builder.RegisterControllers(GetType().Assembly)
-                .Named<IController>(t => t.Name.Replace("Controller", string.Empty));
+        protected override void AddMenu(NavigationBuilder builder)
+        {
+            builder.Add(new Menu
+            {
+                Guid = Guid.NewGuid(),
+                MenuAction = "calender",
+                MenuAccessLevel = 0,
+                MenuIconUrl = "..",
+                MenuName = "Calender"
+            });
         }
 
 

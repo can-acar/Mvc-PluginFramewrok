@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Autofac;
@@ -19,23 +20,27 @@ namespace PluginFramework
 
         protected override Type GetControllerType(RequestContext request_context, string controller_name)
         {
+            var routeValue = HttpContext.Current.Request.RequestContext.RouteData.Values;
             var controller = base.GetControllerType(request_context, controller_name);
-            if (controller != null) return controller;
-            var routes = RouteTable.Routes;
-            object pluginController;
-            //var pluginController = _container.Resolve<IEnumerable<IController>>()
-            //                                 .ToList()
-            //                                 .OfType<IPluginController>()
-            //                                 .FirstOrDefault(c => c.ControllerName == controller_name);
-            //var pluginController = _container.Resolve<IController>();
+            //if (controller != null) return controller;
+           
 
-            if (_container.TryResolveNamed(controller_name, typeof(IController), out pluginController))
-            {
-                return pluginController.GetType();
+            var pluginController = _container.Resolve<IEnumerable<IController>>()
+                                             .ToList()
+                                             .OfType<IPluginController>()
+                                             .FirstOrDefault(c => c.ControllerName == controller_name);
+            
 
-            }
-            return null;
-            // return (pluginController != null) ? pluginController.GetType() : null;
+
+
+
+            //if (_container.TryResolveNamed(controller_name, typeof(IController), out pluginController))
+            //{
+            //    return pluginController.GetType();
+
+            //}
+            //return null;
+            return (pluginController != null) ? pluginController.GetType() : controller;
         }
 
         public override void ReleaseController(IController controller)

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Web.Routing;
 
 
@@ -19,8 +20,23 @@ namespace PluginFramework
             PluginAssembly = Assembly.GetAssembly(GetType());
         }
 
-        protected override void Load(ContainerBuilder builder)
+        protected override void Load(ContainerBuilder plugin)
         {
+        }
+
+        protected virtual void AddMenu(NavigationBuilder builder)
+        {
+
+        }
+
+        public string GetControllerName<TController>()
+        {
+            return typeof(TController).Name.Replace("Controller", string.Empty);
+        }
+
+        public string GetControllerName(Type t)
+        {
+            return t.Name.Replace("Controller", string.Empty);
         }
         public string AssemblyName
         {
@@ -64,9 +80,5 @@ namespace PluginFramework
             return string.Format("{0}", PluginName);
         }
 
-        public string GetControllerName<TController>()
-        {
-            return typeof(TController).Name.Replace("Controller", string.Empty);
-        }
     }
 }
